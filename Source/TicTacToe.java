@@ -1,8 +1,3 @@
-//TODO Make interface
-//TODO Make X and O objects
-//TODO Check if click inbounds tile
-//TODO Check for 3 in a row
-
 package tictactoe;
 
 //Importing
@@ -62,12 +57,24 @@ public class TicTacToe {
 		double mouseX;
 		double mouseY;
 		Turn whoseTurn = Turn.X;
+		boolean win = false;
 		
 		while (!Display.isCloseRequested()){
 			
 			mouseDown = Mouse.isButtonDown(0);
 			mouseX = Mouse.getX();
 			mouseY = 480 - Mouse.getY();
+			
+			if(mouseDown && !mouseAlreadyDown && win){
+				for(int x = 0; x < 3; x++){
+					for(int y = 0; y < 3; y++){
+						ticTacToeBoard[x][y] = TicTacToeTileTypes.BLANK;
+					}
+				}
+				win = false;
+				whoseTurn = Turn.X;
+				mouseAlreadyDown = true;
+			}
 			
 			if(!mouseDown && mouseAlreadyDown){
 				mouseAlreadyDown = false;
@@ -437,96 +444,115 @@ public class TicTacToe {
 				glVertex2d(150,150);
 				glVertex2d(450,150);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][0] == TicTacToeTileTypes.O && ticTacToeBoard[1][0] == TicTacToeTileTypes.O && ticTacToeBoard[2][0] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,150);
 				glVertex2d(450,150);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][1] == TicTacToeTileTypes.X && ticTacToeBoard[1][1] == TicTacToeTileTypes.X && ticTacToeBoard[2][1] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,255);
 				glVertex2d(450,255);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][1] == TicTacToeTileTypes.O && ticTacToeBoard[1][1] == TicTacToeTileTypes.O && ticTacToeBoard[2][1] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,255);
 				glVertex2d(450,255);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][2] == TicTacToeTileTypes.X && ticTacToeBoard[1][2] == TicTacToeTileTypes.X && ticTacToeBoard[2][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,310);
 				glVertex2d(450,310);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][2] == TicTacToeTileTypes.O && ticTacToeBoard[1][2] == TicTacToeTileTypes.O && ticTacToeBoard[2][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,310);
 				glVertex2d(450,310);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][0] == TicTacToeTileTypes.X && ticTacToeBoard[0][1] == TicTacToeTileTypes.X && ticTacToeBoard[0][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(200,100);
 				glVertex2d(200,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][0] == TicTacToeTileTypes.O && ticTacToeBoard[0][1] == TicTacToeTileTypes.O && ticTacToeBoard[0][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(200,100);
 				glVertex2d(200,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[1][0] == TicTacToeTileTypes.X && ticTacToeBoard[1][1] == TicTacToeTileTypes.X && ticTacToeBoard[1][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(305,100);
 				glVertex2d(305,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[1][0] == TicTacToeTileTypes.O && ticTacToeBoard[1][1] == TicTacToeTileTypes.O && ticTacToeBoard[1][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(305,100);
 				glVertex2d(305,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[2][0] == TicTacToeTileTypes.X && ticTacToeBoard[2][1] == TicTacToeTileTypes.X && ticTacToeBoard[2][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(410,100);
 				glVertex2d(410,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[2][0] == TicTacToeTileTypes.O && ticTacToeBoard[2][1] == TicTacToeTileTypes.O && ticTacToeBoard[2][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(410,100);
 				glVertex2d(410,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][0] == TicTacToeTileTypes.X && ticTacToeBoard[1][1] == TicTacToeTileTypes.X && ticTacToeBoard[2][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,100);
 				glVertex2d(450,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[0][0] == TicTacToeTileTypes.O && ticTacToeBoard[1][1] == TicTacToeTileTypes.O && ticTacToeBoard[2][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(150,100);
 				glVertex2d(450,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[2][0] == TicTacToeTileTypes.X && ticTacToeBoard[1][1] == TicTacToeTileTypes.X && ticTacToeBoard[0][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(450,100);
 				glVertex2d(150,400);
 				glEnd();
+				win = true;
 			}
 			if(ticTacToeBoard[2][0] == TicTacToeTileTypes.O && ticTacToeBoard[1][1] == TicTacToeTileTypes.O && ticTacToeBoard[0][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
 				glVertex2d(450,100);
 				glVertex2d(150,400);
 				glEnd();
+				win = true;
+			}
+			if(ticTacToeBoard[0][0] != TicTacToeTileTypes.BLANK && ticTacToeBoard[1][0] != TicTacToeTileTypes.BLANK && ticTacToeBoard[2][0] != TicTacToeTileTypes.BLANK && ticTacToeBoard[0][1] != TicTacToeTileTypes.BLANK && ticTacToeBoard[1][1] != TicTacToeTileTypes.BLANK && ticTacToeBoard[2][1] != TicTacToeTileTypes.BLANK && ticTacToeBoard[0][2] != TicTacToeTileTypes.BLANK && ticTacToeBoard[1][2] != TicTacToeTileTypes.BLANK && ticTacToeBoard[2][2] != TicTacToeTileTypes.BLANK){
+				win = true;
 			}
 			
 			//Sync with display
