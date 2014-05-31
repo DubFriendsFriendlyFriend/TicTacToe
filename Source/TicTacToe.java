@@ -469,15 +469,15 @@ public class TicTacToe {
 			}
 			if(ticTacToeBoard[0][2] == TicTacToeTileTypes.X && ticTacToeBoard[1][2] == TicTacToeTileTypes.X && ticTacToeBoard[2][2] == TicTacToeTileTypes.X){
 				glBegin(GL_LINE_STRIP);
-				glVertex2d(150,310);
-				glVertex2d(450,310);
+				glVertex2d(150,360);
+				glVertex2d(450,360);
 				glEnd();
 				win = true;
 			}
 			if(ticTacToeBoard[0][2] == TicTacToeTileTypes.O && ticTacToeBoard[1][2] == TicTacToeTileTypes.O && ticTacToeBoard[2][2] == TicTacToeTileTypes.O){
 				glBegin(GL_LINE_STRIP);
-				glVertex2d(150,310);
-				glVertex2d(450,310);
+				glVertex2d(150,360);
+				glVertex2d(450,360);
 				glEnd();
 				win = true;
 			}
